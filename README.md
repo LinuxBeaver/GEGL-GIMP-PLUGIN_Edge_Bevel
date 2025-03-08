@@ -2,9 +2,10 @@
 
 A new bevel algorithm for GIMP that uses difference of gaussians edge detect and other things.
 
-https://github.com/LinuxBeaver/GEGL-GIMP-PLUGIN_Oceans_Surface
+![image](https://github.com/user-attachments/assets/880ffc7b-c159-49e1-9a2b-180000e584ce)
 
-![image preview](previews/1.png)
+![image](https://github.com/user-attachments/assets/9d25c6d2-56cc-4f58-9efa-66cd99f67460)
+
 
 
 ## Directory to put Binaries (They do NOT go in the normal plugins folder)
@@ -60,6 +61,4 @@ ninja -C build
   
   ## More previews of this based plugin
   
-  ![image preview](previews/2.png)
-  
-  ![image preview](previews/3.png)
+![image](https://github.com/user-attachments/assets/34207e19-dfd4-4280-89e9-326c322ca39f)
