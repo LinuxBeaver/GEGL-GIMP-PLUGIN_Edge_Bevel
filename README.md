@@ -12,15 +12,15 @@ A new bevel algorithm for GIMP that uses difference of gaussians edge detect and
 
 **Windows**
 
- C:\Users\(USERNAME)\AppData\Local\gegl-0.4\plug-ins
+ `C:\Users\(USERNAME)\AppData\Local\gegl-0.4\plug-ins`
 
  **Linux**
 
-~/.local/share/gegl-0.4/plug-ins
+`~/.local/share/gegl-0.4/plug-ins`
 
  **Linux (Flatpak includes Chromebook)**
 
-~/.var/app/org.gimp.GIMP/data/gegl-0.4/plug-ins
+`~/.var/app/org.gimp.GIMP/data/gegl-0.4/plug-ins`
 
 Then Restart Gimp and go to "GEGL Operation" and look for "Ocean's Surface 2". Gimp 2.99.16+ users will find the filter in Filters>Text Styling , where as 2.10 plugins will only be found in the drop down list.
 
