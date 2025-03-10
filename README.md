@@ -62,3 +62,6 @@ ninja -C build
   ## More previews of this based plugin
   
 ![image](https://github.com/user-attachments/assets/34207e19-dfd4-4280-89e9-326c322ca39f)
+
+![image](https://github.com/user-attachments/assets/abe4a092-31ea-4268-a2b7-35d2c6ffc43a)
+
