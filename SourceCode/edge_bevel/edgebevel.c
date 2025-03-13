@@ -63,7 +63,7 @@ property_double (radius, _("Radius of differenced gaussian"), 94)
     value_range (30, 100)
     ui_meta ("unit", "degree")
 
-property_double (azimuth, _("Azimuth"), 68.0)
+property_double (azimuth, _("Azimuth"), 0.0)
     description (_("Light angle (degrees)"))
     value_range (0, 360)
 
