@@ -52,7 +52,7 @@ end of syntax
 property_boolean (edgebevelcolorpolicy , _("Enable color priority mode"), FALSE)
   description    (_("This (when enabled) disables the bevel's ability to get the layers color information. But in return the color overlay will be enabled. Due to the logic of this filter very dark colors or black will not work with it."))
 
-property_color (color, _("Color"), "#fffff")
+property_color (color, _("Color"), "#ffffff")
     description (_("The color to overlay (defaults to 'white')"))
     ui_meta     ("role", "color-primary")
   ui_meta     ("sensitive", " edgebevelcolorpolicy")
@@ -130,7 +130,8 @@ typedef struct
  GeglNode *multiply1;
  GeglNode *gray;
  GeglNode *lightfix;     
- GeglNode *multiply2;   
+ GeglNode *multiply2;
+ GeglNode *opacity90;      
  GeglNode *fix;   
 
  GeglNode *output;
@@ -167,6 +168,7 @@ static void attach (GeglOperation *operation)
  state->edge = gegl_node_new_child (gegl, "operation", "gegl:edge-sobel", "horizontal", TRUE, "vertical", FALSE,  NULL);
  state->invert = gegl_node_new_child (gegl, "operation", "gegl:invert-gamma", NULL);
  state->srcatop = gegl_node_new_child (gegl, "operation", "gegl:src-atop", NULL);
+ state->opacity90 = gegl_node_new_child (gegl, "operation", "gegl:opacity", "value", 0.10, NULL);
  state->emboss1 = gegl_node_new_child (gegl, "operation", "gegl:emboss", "depth", 100, "elevation", 1.0, "azimuth", 3.0,  NULL);
  state->emboss2 = gegl_node_new_child (gegl, "operation", "gegl:emboss", "depth", 100, "elevation", 2.0, "azimuth", 30.0,  NULL);
  state->dog1 = gegl_node_new_child (gegl, "operation", "gegl:difference-of-gaussians", "radius2", 1.0,  NULL);
@@ -199,7 +201,7 @@ update_graph (GeglOperation *operation)
   {
   gegl_node_link_many (state->input, state->color, state->idref1, state->srcatop, state->emboss2, state->dog2, state->invert, state->sh, state->idref2, state->normal, state->multiply1, state->gray, state->lightfix, state->idref3, state->multiply2,  state->crop, state->smooth, state->fix, state->output,  NULL);
   gegl_node_connect (state->srcatop, "aux", state->microopacity, "output"); 
-  gegl_node_link_many (state->idref1, state->emboss1, state->dog1, state->microopacity,   NULL);
+  gegl_node_link_many (state->idref1, state->emboss1, state->dog1, state->opacity90, state->microopacity,   NULL);
   gegl_node_connect (state->normal, "aux", state->opacity, "output"); 
   gegl_node_link_many (state->idref2, state->edge, state->opacity,   NULL);
   gegl_node_connect (state->multiply1, "aux", state->idref1, "output"); 
@@ -212,7 +214,7 @@ else
   {
   gegl_node_link_many (state->input, state->color, state->idref1, state->srcatop, state->emboss2, state->dog2, state->invert, state->sh, state->idref2, state->normal, state->multiply1, state->gray, state->lightfix, state->multiply2, state->smooth, state->fix, state->output,  NULL);
   gegl_node_connect (state->srcatop, "aux", state->microopacity, "output"); 
-  gegl_node_link_many (state->idref1, state->emboss1, state->dog1, state->microopacity,   NULL);
+  gegl_node_link_many (state->idref1, state->emboss1, state->dog1, state->opacity90, state->microopacity,   NULL);
   gegl_node_connect (state->normal, "aux", state->opacity, "output"); 
   gegl_node_link_many (state->idref2, state->edge, state->opacity,   NULL);
   gegl_node_connect (state->multiply1, "aux", state->idref1, "output"); 
