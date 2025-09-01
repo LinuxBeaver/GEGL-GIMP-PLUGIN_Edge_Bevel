@@ -164,7 +164,7 @@ static void attach (GeglOperation *operation)
  state->microopacity = gegl_node_new_child (gegl, "operation", "gegl:opacity", "value", 0.2, NULL);
  state->opacity = gegl_node_new_child (gegl, "operation", "gegl:opacity", "value", 0.5, NULL);
  state->normal = gegl_node_new_child (gegl, "operation", "gegl:over", NULL);
- state->sh = gegl_node_new_child (gegl, "operation", "gegl:shadows-highlights", "highlights", 65.0, "whitepoint", 30.0, NULL);
+ state->sh = gegl_node_new_child (gegl, "operation", "gegl:shadows-highlights", "highlights", 65.0,  NULL);
  state->edge = gegl_node_new_child (gegl, "operation", "gegl:edge-sobel", "horizontal", TRUE, "vertical", FALSE,  NULL);
  state->invert = gegl_node_new_child (gegl, "operation", "gegl:invert-gamma", NULL);
  state->srcatop = gegl_node_new_child (gegl, "operation", "gegl:src-atop", NULL);
